@@ -1,0 +1,59 @@
+<div class="well col-md-2">
+  <h3 l10nTranslate>categories</h3>
+  <hr/>
+  <ul class="list-group">
+    <input type="text" id="title" name="title" placeholder="Search" [(ngModel)]="ls.searchObject.title">
+
+  </ul>
+  <div class="text-center"><label l10nTranslate>price</label></div>
+  <div class="inline-group">
+    <input style="width: 40%" type="number" name="priceFrom" class="inline-item" placeholder="From" [(ngModel)]="ls.searchObject.priceFrom"
+    /> |
+    <input style="width: 40%" type="number" name="priceTo" class="inline-item" placeholder="To" [(ngModel)]="ls.searchObject.priceTo"
+    />
+  </div>
+  <br/>
+  <ul class="inline-group" style="margin-left: -40px">
+    <label for="type"><b l10nTranslate>type</b> : <select name="type" id="type" [(ngModel)]="ls.searchObject.type">
+            <option *ngFor="let type of ts.bikeTypes" value="{{type.value}}">{{type.text}}</option>
+          </select></label>
+
+    <label for="type" l10nTranslate> <b l10nTranslate> brand</b>: <select name="type" id="type" [(ngModel)]="ls.searchObject.brand">
+            <option *ngFor="let type of ts.bikeBrands" value="{{type.value}}">{{type.text}}</option>
+          </select> </label>
+
+  </ul>
+  <ul class="list-group">
+
+    <div class="form-inline"  style="margin-left: -15px">
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <label for="old " l10nTranslate>old</label>
+        <input type="radio" id="old " name="optradio" value="true" [(ngModel)]="ls.searchObject.used">
+      </div>
+
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <label for="new " l10nTranslate>new</label>
+        <input type="radio" id="new " name="optradio" value="false" [(ngModel)]="ls.searchObject.used">
+      </div>
+
+    </div>
+
+
+  </ul>
+
+  <ul class="form-inline "  style="margin-left: -40px">
+     
+                                <label for="area" l10nTranslate>area</label>
+
+                                <select name="area " id="area " title="Area " [(ngModel)]="ls.searchObject.area">
+                           <option *ngFor="let neighborhood of ts.neighborhoods" value="{{neighborhood.value}}">{{neighborhood.text}}</option>
+
+            </select>
+                             
+  </ul>
+</div>
+<span *ngFor="let item of models">
+  <div class="display: inline;clear: both" style="display: inline;">
+ <list-card [model]="item"  ></list-card>
+</div>
+</span>

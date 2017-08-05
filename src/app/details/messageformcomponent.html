@@ -1,0 +1,37 @@
+<div class="well well-lg" *ngIf="show">
+    <form>
+        <div class="form-group">
+            <label for="txtName" l10nTranslate>name</label>
+            <input type="text" class="form-control" id="txtName" placeholder="Name">
+        </div>
+        <div class="form-group">
+            <label for="txtEmail" l10nTranslate>email</label>
+            <input type="text" class="form-control" id="txtEmail" placeholder="Example@domain.com">
+        </div>
+        <div class="form-group">
+            <label for="txtphone" l10nTranslate>phone</label>
+            <input type="tel" class="form-control" id="txtphone" placeholder="+601111234">
+        </div>
+        <div class="form-group">
+            <label for="txtOthers" l10nTranslate>contacts</label>
+            <input type="text" class="form-control" id="txtOthers" placeholder="Other contacts skype , facebook, whatsapp ">
+        </div>
+
+        <div class="form-group">
+            <label for="txtMsg" l10nTranslate>message</label>
+            <textarea rows="4" class="form-control" id="txtMsg" placeholder="Hello , "></textarea>
+        </div>
+
+        <div class="form-inline text-right">
+            <div class="col-md-5">
+                <button type="button" class="btn btn-primary" id="btnSave" value="Save" (click)="pushDetails()" l10nTranslate>sendMessage</button>
+            </div>
+            <div class="col-md-2">
+                <button type="reset" class="btn btn-danger" id="btnreset" value="Reset" l10nTranslate>reset</button>
+            </div>
+        </div>
+        <br/>
+        <br/>
+    </form>
+
+</div>

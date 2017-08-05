@@ -1,0 +1,178 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <form [formGroup]="form">
+        <h3 class="text-center" l10nTranslate> petfd</h3>
+        <hr/>
+        <div class="form-group">
+          <label for="txttitle" l10nTranslate>title</label>
+          <input type="text" name="txttitle" id="txttitle" class="form-control" formControlName="title">
+        </div>
+
+        <div class="form-group">
+          <label for="txtDesc" l10nTranslate>description</label>
+          <textarea name="txtDesc" id="txtDesc" class="form-control" formControlName="description"></textarea>
+        </div>
+
+        <div class="form-inline">
+          <label for="selUnitType" l10nTranslate>type</label>
+
+          <select name="selUnitType" id="selUnitType" formControlName="bikeType">
+            <option *ngFor="let type of ts.bikeTypes" value="{{type.value}}">{{type.text}}</option>
+          </select>
+
+          <label for="selUnitType" l10nTranslate>brand</label>
+
+          <select name="selUnitBrand" id="selUnitBrand" formControlName="bikeBrand" (change)="typeChange($event.target.value)">
+            <option *ngFor="let type of ts.bikeBrands" value="{{type.value}}">{{type.text}}</option>
+          </select>
+
+          <label for="selModel" l10nTranslate>model</label>
+          <select name="selModel" id="selModel" formControlName="model">
+            <option *ngFor="let type of ts.models" value="{{type.value}}">{{type.text}}</option>
+          </select>
+
+
+          <label for="selFrameType" l10nTranslate>frameType</label>
+
+          <select name="selFrameType" id="selFrameType" formControlName="frameType">
+            <option *ngFor="let type of ts.frameType" value="{{type.value}}">{{type.text}}</option>
+          </select>
+
+          <label for="selBreakType" l10nTranslate>breakType</label>
+
+          <select name="selBreakType" id="selBreakType" formControlName="breakType">
+            <option *ngFor="let type of ts.breakType" value="{{type.value}}">{{type.text}}</option>
+          </select>
+
+
+
+
+
+
+        </div>
+        <div class="form-inline">
+          <label for="txtPrice" l10nTranslate>price</label>
+          <input type="number" name="txtPrice" id="txtPrice" class="form-control" formControlName="price">
+
+
+
+          <div class="form-group">
+            <label for="txtDistance" l10nTranslate>size</label>
+            <input type="number" name="txtDistance" id="txtDistance" class="form-control" formControlName="size">
+          </div>
+
+          <div class="form-group">
+            <label for="txtInterior" l10nTranslate>wheelSize</label>
+            <input type="number" name="txtInterior" id="txtInterior" class="form-control" formControlName="wheelSize">
+          </div>
+        </div>
+        <br/>
+        <div class="form-inline">
+          <div class="form-group">
+            <label for="txtDistance" l10nTranslate>productionYear</label>
+            <input type="number" name="txtDistance" id="txtDistance" class="form-control" formControlName="productionDate">
+          </div>
+          <div class="form-group">
+            <label for="hasSWR" l10nTranslate>old</label>
+            <input type="checkbox" name="hasSWR" id="hasSWR" class="checkbox" formControlName="used">
+          </div>
+
+
+        </div>
+
+        <div class="well">
+          <image-upload (uploadImage)=uploadImage($event) (removeImage)="removeImage($event)"></image-upload>
+        </div>
+        <br/>
+
+        <!-- <div class="form-group">
+           <input type="text" name="txtUnitCount" id="txtUnitCount" class="form-control">
+           <label for="txtUnitCount">Unit count</label>
+         </div>-->
+        <div class="well">
+
+          <h3 l10nTranslate>address</h3>
+          <hr/>
+          <div class="form-group">
+            <label for="selNH" l10nTranslate>area</label>
+            <select name="selNH" id="selNH" formControlName="neighborhood">
+              <option *ngFor="let neighborhood of ts.neighborhoods" value="{{neighborhood.value}}">{{neighborhood.text}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="txtStreetName" l10nTranslate>steetName</label>
+            <input type="text" name="txtStreetName" id="txtStreetName" class="form-control" formControlName="streetName">
+          </div>
+          <div class="form-inline">
+            <div class="form-group">
+              <label for="txtBuildingNumber" l10nTranslate>buildingNumber</label>
+              <input type="number" name="txtBuildingNumber" id="txtBuildingNumber" class="form-control" formControlName="buildingNumber">
+            </div>
+            <div class="form-group">
+              <label for="txtPostCode" l10nTranslate>postCode</label>
+              <input type="text" name="txtPostCode" id="txtPostCode" class="form-control" formControlName="postCode">
+            </div>
+          </div>
+        </div>
+        <div class="form-inline">
+          <div class="form-group">
+            <label for="txtFromDate" l10nTranslate>availableFromDate</label>
+            <input type="date" name="txtFromDate" id="txtFromDate" class="form-control" formControlName="fromDate">
+          </div>
+
+          <div class="form-group">
+            <label for="txtToDate" l10nTranslate>availableToDate</label>
+            <input type="date" name="txtToDate" id="txtToDate" class="form-control" formControlName="toDate">
+          </div>
+        </div>
+
+      </form>
+      <div class="well">
+        <h3 l10nTranslate>ownerInformation</h3>
+        <hr/>
+        <div class="form-group">
+          <label for="txtOI" l10nTranslate>name</label>
+          <input disabled type="text" name="txtOI" id="txtOI" class="form-control" [(ngModel)]="owner.name">
+        </div>
+        <div class="form-group">
+          <label for="txtAbout" l10nTranslate>about</label>
+          <input disabled type="text" name="txtAbout" id="txtAbout" class="form-control" [ngModel]="owner.about">
+        </div>
+
+        <div class="form-group">
+          <label for="txtEmail" l10nTranslate>email</label>
+          <input disabled type="text" name="txtEmail" id="txtEmail" class="form-control" [ngModel]="owner.email">
+        </div>
+
+        <div class="form-group">
+          <label for="txtWebsite" l10nTranslate>faceBook</label>
+          <input disabled type="text" name="txtWebsite" id="txtWebsite" class="form-control" [ngModel]="owner.facebook">
+        </div>
+
+        <div class="form-group">
+          <label for="txtContact" l10nTranslate>contacts</label>
+          <input disabled type="text" name="txtContact" id="txtContact" class="form-control" [ngModel]="owner.phone">
+        </div>
+      </div>
+      <div class="form-inline text-right">
+        <div class="col-md-5">
+          <button type="button" class="btn btn-primary btn-lg" id="btnSave" value="Save" (click)="pushDetails()" l10nTranslate>save</button>
+        </div>
+        <div class="col-md-2">
+          <button type="reset" class="btn btn-danger btn-lg" id="btnreset" value="reset" l10nTranslate>reset</button>
+        </div>
+      </div>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+
+    </div>
+  </div>
+</div>

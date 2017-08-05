@@ -1,0 +1,175 @@
+<!-- Collect the nav links, forms, and other content for toggling -->
+
+
+
+
+<div>
+
+
+    <div>
+
+
+        <!---->
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><b l10nTranslate>newBike</b> <i class="glyphicon glyphicon-hand-right"></i></a></li>
+            <li><a href="#"><b l10nTranslate>oldBike</b> <i class="glyphicon glyphicon-piggy-bank"></i></a></li>
+            <li><a href="add"><b l10nTranslate>addBike </b><i class="glyphicon glyphicon-plus"></i></a></li>
+            <li><a href="#" *ngIf="lgs.islogin" (click)=lgs.logout() l10nTranslate> logout <i class="glyphicon glyphicon-off"></i></a></li>
+            <li class="dropdown" *ngIf="!lgs.islogin">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b l10nTranslate> login</b> <span class="glyphicon glyphicon-user"></span></a>
+                <ul id="login-dp" class="dropdown-menu">
+                    <li>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <b l10nTranslate>loginVia</b>
+                                <div class="social-buttons">
+                                    <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+                                    <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+                                </div>
+                                <b l10nTranslate>or</b>
+                                <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                    <div class="form-group">
+                                        <label class="sr-only" for="exampleInputEmail2" l10nTranslate>email</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required #user>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="exampleInputPassword2" l10nTranslate>password</label>
+                                        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required #password>
+                                        <div class="help-block text-right"><a href="" l10nTranslate>ftp</a></div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <button class="btn btn-primary btn-block" (click)="login(user.value,password.value)"  l10nTranslate><b>signin</b></button>
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div class="bottom text-center"> <b l10nTranslate>
+                                newhere <a href="/reg"><b l10nTranslate>joinUs</b></a>
+                                </b>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img width="20px"
+         src="data:image/png;base64,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">
+    <i class="glyphicon glyphicon-cog"></i>
+    </a>
+                <ul class="dropdown-menu">
+                    <li class="text-right" (click)="changeLang('ar')"><a><b>ألعربية</b></a></li>
+                    <li (click)="changeLang('en')"><a><b>English</b></a></li>
+                    <!--<li><a href="#">Nederlands</a></li>-->
+
+                </ul>
+            </li>
+        </ul>
+
+
+
+    </div>
+
+    <div class="container">
+        <img width="7%" src="https://s-media-cache-ak0.pinimg.com/736x/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-7">
+                <div class="form-group has-feedback ">
+
+                    <input type="text" class="form-control" id="inputSuccess2" placeholder="Search" [(ngModel)]="ls.searchObject.title" required/>
+                    <span class="glyphicon glyphicon-search form-control-feedback" (click)="search()"></span>
+                </div>
+
+                <!--search panel-->
+                <div *ngIf="moreClick">
+                    <div class="row">
+
+                        <div class="form-inline">
+
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 ">
+                                <label for="priceTo" l10nTranslate>to</label>
+                                <input type="number" name="priceTo" id="priceTo" class="form-control" title=" Price To " placeholder="Greater than " [(ngModel)]="ls.searchObject.priceTo"
+                                />
+
+                            </div>
+
+                            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 ">
+                                <label for="priceFrom" l10nTranslate>from</label>
+                                <input type="number" name="priceFrom" id="priceFrom" class="form-control" title="Price From" placeholder="Less than" [(ngModel)]="ls.searchObject.priceFrom">
+                            </div>
+
+                            <br/>
+                            <br/>
+                        </div>
+
+                        <div class="form-inline">
+
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 ">
+                                <label for="type" l10nTranslate>type</label>
+
+                                <select name="type" id="type" class="form-control" title="Type" [(ngModel)]="ls.searchObject.type">
+                <option *ngFor="let type of ts.bikeTypes" value="{{type.value}}">{{type.text}}</option>
+
+            </select>
+                            </div>
+
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 ">
+                                <label for="brand" l10nTranslate>brand</label>
+
+                                <select name="brand" id="brand" class="form-control" title="Brand" [(ngModel)]="ls.searchObject.brand">
+                 <option *ngFor="let type of ts.bikeBrands" value="{{type.value}}">{{type.text}}</option>
+            </select>
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="form-inline">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <label for="old " l10nTranslate>old</label>
+                                <input type="radio" id="old " name="optradio" value="true" [(ngModel)]="ls.searchObject.used">
+                            </div>
+
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <label for="new " l10nTranslate>new</label>
+                                <input type="radio" id="new " name="optradio" value="false" [(ngModel)]="ls.searchObject.used">
+                            </div>
+
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="form-inline">
+
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 ">
+                                <label for="area" l10nTranslate>area</label>
+
+                                <select name="area " id="area " class="form-control " title="Area " [(ngModel)]="ls.searchObject.area">
+                           <option *ngFor="let neighborhood of ts.neighborhoods" value="{{neighborhood.value}}">{{neighborhood.text}}</option>
+
+            </select>
+                            </div>
+
+                        </div>
+
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+          <div class="col-md-5"  >
+        </div>
+        <div class="col-md-3" (click)="moreFilter()" >
+            <b l10nTranslate>more</b> <i class="glyphicon glyphicon-filter"></i>
+        </div>
+
+
+    </div>
+
+</div>
+<router-outlet></router-outlet>

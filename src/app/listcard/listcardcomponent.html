@@ -1,0 +1,16 @@
+<div class="card" style="width: 22%;border: groove; margin: 10px; display: inline-block;">
+  <img class="card-img-top center-block" style="margin-top: 2px" [src]="model.img" alt="Card image cap" width="95%" height="10%">
+
+  <div class="card-block">
+    <h4 class="card-title">{{model.title}}</h4>
+
+    <ul class="list-group">
+      <li class="list-unstyled ilgroup"><b l10nTranslate>price</b> : <b> &euro; {{model.price}}</b></li>
+      <li class="list-unstyled ilgroup"><b l10nTranslate>brand</b> : <b>{{model.brand}}</b></li>
+      <li class="list-unstyled ilgroup"><b l10nTranslate>seller</b> : <b>{{model.seller}}</b></li>
+      <li class="list-unstyled ilgroup"><b l10nTranslate>Details</b> : <b>{{model.desc |  limitToPipe : 50}}
+        <a href="/detials/{{model.key}}" class="card-link ilgroup"><b l10nTranslate>seeMore</b></a></b></li>
+    </ul>
+    <p class="card-text"></p>
+  </div>
+</div>

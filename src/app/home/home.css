@@ -1,0 +1,24 @@
+.firstPanel {
+  background-color: midnightblue;
+  color: beige;
+  padding-right: 5%;
+}
+
+.logo {
+  width: 3%;
+  height: 4%;
+}
+
+.bikeMenu {
+  padding-left: 10%;
+  background-color: antiquewhite;
+  font-size: large;
+
+}
+.bikeMenu ul il a{
+  cursor: hand;
+}
+
+.form-group .form-control-feedback {
+  pointer-events: initial; /* or - auto // or -  unset  */
+}

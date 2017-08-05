@@ -1,0 +1,73 @@
+<div>
+<div class="row" >
+
+    <div class="form-group">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 ">
+            <label for="priceTo">Price : </label>
+        </div>
+
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+            <input type="text" name="priceTo" id="priceTo" class="form-control"  title=" Price To " placeholder="Greater than " [ngModel]="searchObject.priceTo" />  
+        </div>
+
+         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+              |  <input type="text" name="priceFrom" id="priceFrom" class="form-control" title="Price From" placeholder="Less than" [ngModel]="searchObject.priceFrom">
+        </div>
+
+
+    </div>
+
+    <div class="form-group">
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 ">
+            <label for="type">Type </label>
+
+            <select name="type" id="type"  class="form-control"  title="Type" [ngModel]="searchObject.type">
+                <option value="Mountain "></option>
+                <option value="Race "></option>
+                <option value="Hyperbird "></option>
+
+            </select>
+        </div>
+
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 ">
+            <label for="brand ">Brand </label>
+
+            <select name="brand" id="brand" class="form-control" title="Brand" [ngModel]="searchObject.brand">
+                <option value="Trinx "></option>
+                <option value="BWM "></option>
+                <option value="Hyperbird "></option>
+            </select>
+        </div>
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" [ngModel]="searchObject.old"> 
+            <label for="old ">Old </label>
+            <input type="checkbox " id="old " name="old " />
+        </div>
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" [ngModel]="searchObject.new">
+            <label for="new ">New </label>
+            <input type="checkbox " id="new" name="new" />
+        </div>
+        
+
+
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 " [ngModel]="searchObject.area">
+            <label for="area">Area </label>
+
+            <select name="area " id="area " class="form-control " title="Area ">
+                <option value="Maadi "></option>
+                <option value="Nasr City "></option>
+                <option value="new Egypt "></option>
+            </select>
+        </div>
+
+    </div>
+
+
+
+
+
+</div>
+
+</div>
