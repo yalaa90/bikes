@@ -11,6 +11,8 @@ export class AdddetailService {
   }
 
   public pushDetails(model) {
+
+
     this.cds.push('details', model).subscribe(item => {
       let key = JSON.parse(item['_body']).name;
       this.pushSubDetails(model, key);
@@ -26,13 +28,14 @@ export class AdddetailService {
   public pushSubDetails(model, key) {
     this.header.append('x-apikey', '597c6db8a63f5e835a5df8b1');
     this.header.append('Content-Type', 'application/json');
-   /* this.header.append('Access-Control-Allow-Headers', '*');
-    this.header.append('Access-Control-Request-Headers','*');*/
+    /* this.header.append('Access-Control-Allow-Headers', '*');
+     this.header.append('Access-Control-Request-Headers','*');*/
     let onwerName = model.owner ? model.owner.name : '';
+    debugger;
     let subModel = {
       key: key, title: model.title, desc: model.description, price: model.price
-      , brand: model.bikeType, seller: onwerName,img:'https://secondhandbikes.dk/Catalog/Images/17-04-01-05-40-43--IMG_1010.JPG',
-      used:model.used,area:model.neighborhood
+      , brand: model.bikeType, seller: onwerName, img: model.images[0],
+      used: model.used, area: model.neighborhood
     };
     this.cds.pushwithoutresponse('https://yahiardbr-2f89.restdb.io/rest/subdetails', subModel, this.header);
   }

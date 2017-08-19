@@ -10,12 +10,10 @@ import { LoginService } from './loginservice';
 
 export class loginComponent {
     message: string;
-    constructor(private ls: LoginService) {
+    constructor(public ls: LoginService) {
 
     }
-    helloword() {
-debugger;
-    }
+    
     login(user, password) {
         debugger;
         if (user && password) {

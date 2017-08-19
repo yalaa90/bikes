@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" [dir]="lgs.dir">
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
@@ -51,32 +51,42 @@
 
 
 
+
         </div>
         <div class="form-inline">
+          <label for="selBreakType" l10nTranslate>speedCount</label>
+
+          <select name="selSpeadCount" id="selSpeadCount" formControlName="speedCount">
+            <option *ngFor="let type of ts.speadCount" value="{{type.value}}">{{type.text}}</option>
+          </select>
+        </div>
+        <div class="form-inline">
+          
+
           <label for="txtPrice" l10nTranslate>price</label>
-          <input type="number" name="txtPrice" id="txtPrice" class="form-control" formControlName="price">
+          <input type="number" min="0" name="txtPrice" id="txtPrice" class="form-control" formControlName="price">
 
 
 
           <div class="form-group">
             <label for="txtDistance" l10nTranslate>size</label>
-            <input type="number" name="txtDistance" id="txtDistance" class="form-control" formControlName="size">
+            <input type="number" min="0" name="txtDistance" id="txtDistance" class="form-control" formControlName="size">
           </div>
 
           <div class="form-group">
             <label for="txtInterior" l10nTranslate>wheelSize</label>
-            <input type="number" name="txtInterior" id="txtInterior" class="form-control" formControlName="wheelSize">
+            <input type="number" min="0" name="txtInterior" id="txtInterior" class="form-control" formControlName="wheelSize">
           </div>
         </div>
         <br/>
         <div class="form-inline">
           <div class="form-group">
             <label for="txtDistance" l10nTranslate>productionYear</label>
-            <input type="number" name="txtDistance" id="txtDistance" class="form-control" formControlName="productionDate">
+            <input type="number" min="2000" name="txtDistance" id="txtDistance" class="form-control" formControlName="productionDate">
           </div>
           <div class="form-group">
             <label for="hasSWR" l10nTranslate>old</label>
-            <input type="checkbox" name="hasSWR" id="hasSWR" class="checkbox" formControlName="used">
+            <input type="checkbox" id="hasSWR" name="hasSWR" formControlName="used" />
           </div>
 
 

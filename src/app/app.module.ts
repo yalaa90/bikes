@@ -29,7 +29,6 @@ import { LocalizationModule, LocaleService, TranslationService } from 'angular-l
 import {LocalizationConfig} from './common/localizationconfig';
 import {UploadComponent} from './common/uploader';
 import {FireBaseService} from './common/firebaseservice';
- 
 
 export const rout = [
   
@@ -38,13 +37,23 @@ export const rout = [
   { path: 'add', component: AddDetailsComponent },
   {path: 'detials/:key', component: DetailsComponent}
 ]
+/*export const firebaseConfig = {
+    apiKey: "AIzaSyA0F5wzRmzY--QlSduyy578cMVPVA32HVg",
+    authDomain: "rooms-d080d.firebaseapp.com",
+    databaseURL: "https://rooms-d080d.firebaseio.com",
+    projectId: "rooms-d080d",
+    storageBucket: "rooms-d080d.appspot.com",
+    messagingSenderId: "383953696649"
+  };
+*/
 export const firebaseConfig = {
-  apiKey: 'AIzaSyA0F5wzRmzY--QlSduyy578cMVPVA32HVg',
-  authDomain: '1qBXaY7aH6P4TcMwdPmRZYsGRljWsnm7rS8htTxM',
-  databaseURL: 'https://rooms-d080d.firebaseio.com/',
-  storageBucket: 'rooms-d080d.appspot.com'
-};
-
+    apiKey: "AIzaSyDsM4pg3Ri5dRoC3reXsGClUfE6SNBH06Y",
+    authDomain: "agla-e0e34.firebaseapp.com",
+    databaseURL: "https://agla-e0e34.firebaseio.com",
+    projectId: "agla-e0e34",
+    storageBucket: "agla-e0e34.appspot.com"
+  };
+  
 export function initLocalization(localizationConfig: LocalizationConfig): Function {
     return () => localizationConfig.load();
 }

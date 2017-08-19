@@ -12,8 +12,8 @@
         <!---->
 
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><b l10nTranslate>newBike</b> <i class="glyphicon glyphicon-hand-right"></i></a></li>
-            <li><a href="#"><b l10nTranslate>oldBike</b> <i class="glyphicon glyphicon-piggy-bank"></i></a></li>
+            <li><a [routerLink]="['list']" (click)="ls.searchObject.used=false;"><b l10nTranslate>newBike</b> <i class="glyphicon glyphicon-hand-right"></i></a></li>
+            <li><a [routerLink]="['list']" (click)="ls.searchObject.used=true;" ><b l10nTranslate>oldBike</b> <i class="glyphicon glyphicon-piggy-bank"></i></a></li>
             <li><a href="add"><b l10nTranslate>addBike </b><i class="glyphicon glyphicon-plus"></i></a></li>
             <li><a href="#" *ngIf="lgs.islogin" (click)=lgs.logout() l10nTranslate> logout <i class="glyphicon glyphicon-off"></i></a></li>
             <li class="dropdown" *ngIf="!lgs.islogin">
@@ -36,6 +36,7 @@
                                     <div class="form-group">
                                         <label class="sr-only" for="exampleInputPassword2" l10nTranslate>password</label>
                                         <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required #password>
+                                       <span style="color: red" >{{lgs.message}}</span>
                                         <div class="help-block text-right"><a href="" l10nTranslate>ftp</a></div>
                                     </div>
                                     
@@ -45,8 +46,9 @@
 
                                 </form>
                             </div>
+                            
                             <div class="bottom text-center"> <b l10nTranslate>
-                                newhere <a href="/reg"><b l10nTranslate>joinUs</b></a>
+                                newhere <a [routerLink]="['/reg']"><b l10nTranslate>joinUs</b></a>
                                 </b>
                             </div>
                         </div>
@@ -71,15 +73,15 @@
 
     </div>
 
-    <div class="container">
+    <div class="container" >
         <img width="7%" src="https://s-media-cache-ak0.pinimg.com/736x/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg">
-        <div class="row">
+        <div class="row" [dir]="lgs.dir">
             <div class="col-md-2"></div>
             <div class="col-md-7">
                 <div class="form-group has-feedback ">
 
-                    <input type="text" class="form-control" id="inputSuccess2" placeholder="Search" [(ngModel)]="ls.searchObject.title" required/>
-                    <span class="glyphicon glyphicon-search form-control-feedback" (click)="search()"></span>
+                    <input type="text" (keyup.enter)="enter()" class="form-control" id="inputSuccess2" placeholder="Search" [(ngModel)]="ls.searchObject.title" required/>
+                    <span class="glyphicon glyphicon-search form-control-feedback"  (click)="search();moreClick=false;"></span>
                 </div>
 
                 <!--search panel-->
@@ -90,14 +92,14 @@
 
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 ">
                                 <label for="priceTo" l10nTranslate>to</label>
-                                <input type="number" name="priceTo" id="priceTo" class="form-control" title=" Price To " placeholder="Greater than " [(ngModel)]="ls.searchObject.priceTo"
+                                <input min="0" type="number" name="priceTo" id="priceTo" class="form-control" title=" Price To " placeholder="Greater than " [(ngModel)]="ls.searchObject.priceTo"
                                 />
 
                             </div>
 
-                            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 ">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 ">
                                 <label for="priceFrom" l10nTranslate>from</label>
-                                <input type="number" name="priceFrom" id="priceFrom" class="form-control" title="Price From" placeholder="Less than" [(ngModel)]="ls.searchObject.priceFrom">
+                                <input min="0" type="number" name="priceFrom" id="priceFrom" class="form-control" title="Price From" placeholder="Less than" [(ngModel)]="ls.searchObject.priceFrom">
                             </div>
 
                             <br/>

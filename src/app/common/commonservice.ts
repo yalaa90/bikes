@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 @Injectable()
 export class CommonService {
-  private _url = 'https://rooms-d080d.firebaseio.com/';
+  private _url = 'https://agla-e0e34.firebaseio.com/';
 
   get url(): string {
     return this._url;

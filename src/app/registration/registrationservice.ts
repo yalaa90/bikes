@@ -8,8 +8,9 @@ export class RegistrationService {
     }
 
     createAccount(user: User) {
-        debugger;
-        this.cds.push('users', user);
-        
+        this.cds.push('users', user).subscribe(i => {
+            debugger;
+        });
+
     }
 }

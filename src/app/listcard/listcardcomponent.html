@@ -1,7 +1,7 @@
-<div class="card" style="width: 22%;border: groove; margin: 10px; display: inline-block;">
-  <img class="card-img-top center-block" style="margin-top: 2px" [src]="model.img" alt="Card image cap" width="95%" height="10%">
+<div class="card" style="width: 22%;   border: groove; margin: 10px; display: inline-block;">
+  <img class="card-img-top center-block" style="margin-top: 2px; height:5%" [src]="model.img" alt="Card image cap" width="95%" height="10%">
 
-  <div class="card-block">
+  <div class="card-block" [dir]="lgs.dir"> 
     <h4 class="card-title">{{model.title}}</h4>
 
     <ul class="list-group">

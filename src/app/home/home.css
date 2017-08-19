@@ -21,4 +21,5 @@
 
 .form-group .form-control-feedback {
   pointer-events: initial; /* or - auto // or -  unset  */
+  cursor:pointer;
 }

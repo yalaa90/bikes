@@ -53,10 +53,15 @@
     "remove":"Remove",
     "phone":"Phone Number",
     "likeIt":" Like it, do you buy it ?",
-    "sendMessage":"Send A Message",
+    "sendMessage":"Send A Message Or Purchase Order",
     "purchaseOrder":"Purchase Order",
     "moreContacts":"More Contacts",
     "print":"Print",
     "report":"Report a problem with this unit",
-    "message":"Message"
+    "message":"Message",
+    "model":"Model",
+    "confirmPassword":"Confirm Password",
+    "isMerchent":"Are you merchent?",
+    "plenurdata":"Please enter your data",
+    "speedCount":"Speed Type"
 }

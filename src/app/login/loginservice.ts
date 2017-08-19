@@ -4,35 +4,52 @@ import { CommonDataService } from '../common/commondataservice';
 import { Router } from '@angular/router';
 import { AngularFireAuth, AuthProviders, AuthMethods } from 'angularfire2/auth';
 import { AngularFire } from 'angularfire2';
-
+import { LocaleService } from 'angular-l10n';
 import * as firebase from 'firebase/app';
 
 @Injectable()
 export class LoginService {
 
     private _message: string;
-    private _regMessage:string;
+    private _regMessage: string;
     private _islogin = false;
-
-    constructor(public afAuth: AngularFireAuth, private router: Router, private af: AngularFire) {
-      this.isLoginimplemention();
+    private _dir;
+    constructor(public afAuth: AngularFireAuth, private router: Router, private af: AngularFire, private local: LocaleService) {
+        this.isLoginimplemention();
+        this.checkLang();
     }
 
-    public getUserByEmail(email,fn:()=>{}) {
-        
+
+
+    get dir() {
+        return this._dir;
+    }
+
+    set dir(value) {
+        this._dir = value;
+    }
+
+    checkLang() {
+
+        let lang = this.local.getCurrentLanguage();
+        if (lang == 'ar') this.dir = 'rtl';
+        else this.dir = '';
+    }
+    public getUserByEmail(email, fn: () => {}) {
+
     }
 
     public login(user, password): void {
-         debugger;
+        debugger;
         this.afAuth.login({
             email: user
             , password: password
         },
             { provider: AuthProviders.Password, method: AuthMethods.Password }).then(i => {
                 debugger;
-                 
+
                 this.router.navigate([""]);
-                
+
             }).catch(i => {
                 debugger;
                 this._message = i.message;

@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Http , Headers} from "@angular/http";
+import { Http, Headers } from "@angular/http";
 import { CommonService } from "./commonservice";
 import { FormGroup } from '@angular/forms';
 import { AngularFire } from 'angularfire2';
@@ -8,6 +8,7 @@ import { AngularFire } from 'angularfire2';
 export class CommonDataService {
 
   constructor(private http: Http, private cs: CommonService, private af: AngularFire) {
+
   }
 
   public pushwithoutresponse(url: string, body, header?) {
@@ -72,4 +73,10 @@ export class CommonDataService {
       return obj[item];
     }
   }
+
+  public pushBackAnd(model) {
+    
+  }
+
+
 }

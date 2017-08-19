@@ -7,6 +7,7 @@ import { AngularFire } from 'angularfire2';
 import { CommonDataService } from '../common/commondataservice';
 import { CommonService } from '../common/commonservice';
 import { Headers } from '@angular/http';
+import {LoginService} from '../login/loginservice'
 @Component({
   selector: 'add-details',
   templateUrl: 'adddetailscomponent.html',
@@ -14,48 +15,46 @@ import { Headers } from '@angular/http';
 })
 export class AddDetailsComponent {
 
-
-  public uploader: FileUploader = new FileUploader({
-    url: 'https://rooms-d080d.firebaseio.com/images.json'
-    , method: 'POST',
-    disableMultipart: false
-  });
+ 
   public form: FormGroup;
   public owner = {};
   public images = []
-  constructor(private fb: FormBuilder, private ads: AdddetailService, private ts: TypeService, private cs: CommonService, private cds: CommonDataService, private af: AngularFire) {
+  constructor(private fb: FormBuilder, private ads: AdddetailService, public ts: TypeService, private cs: CommonService, private cds: CommonDataService, private af: AngularFire,
+  public lgs:LoginService
+  ) {
 
     this.getOwnerDetails();
     this.form = fb.group({
-      price: ['', Validators.required],
-      title: ['', Validators.required],
-      bikeType: '',
-      neighborhood: ['', Validators.required],
-      streetName: '',
-      buildingNumber: '',
-      postCode: '',
-      size: '',
-      wheelSize: '',
+      price: [null, Validators.required],
+      title: [null, Validators.required],
+      bikeType: null,
+      neighborhood: [null, Validators.required],
+      streetName: null,
+      buildingNumber: null,
+      postCode: null,
+      size: null,
+      wheelSize: null,
       fromDate: Date.now(),
-      toDate: '',
+      toDate: null,
       used: false,
-      description: '',
-      productionDate: '',
+      description: null,
+      productionDate: null,
       images: [],
-      bikeBrand: '',
+      bikeBrand: null,
       onwer: {},
-      frameType: '',
-      breakType: '',
-      speedCount: '',
-      helper: false,
-      weight: '',
-      model: ''
+      frameType: null,
+      breakType: null,
+      speedCount: null,
+      helper: null,
+      weight: null,
+      model: null
 
 
     });
   }
 
   pushDetails() {
+    this.form.patchValue({ images: this.images })
     this.ads.pushDetails(this.form.value);
 
   }
@@ -70,7 +69,6 @@ export class AddDetailsComponent {
     this.ads.getDetails(key);
   }
   upload(file) {
-    debugger;
     //this.images.push(file);
   }
   getOwnerDetails() {

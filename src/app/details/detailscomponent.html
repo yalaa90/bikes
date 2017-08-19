@@ -1,98 +1,106 @@
 <div class="container">
   <div class="row">
     <div class="col-md-2"></div>
-    <div class="col-md-6">
-      <div class="col-md-10  well">
+    <div class="col-md-6 ">
+      <div class="col-md-12  well ">
         <modal-gallery [modalImages]="images"></modal-gallery>
       </div>
 
       <br/>
-      <div class="col-md-12 well well-sm ">
-        <h3> {{detail.title}} <b>/  {{detail.price}} &pound; </b></h3>
-        <h3>
-          <B l10nTranslate>address</B> {{" : "+address}} <i class="fa fa-map-marker" aria-hidden="true"> </i>
-        </h3>
+      <div class="col-md-12 well well-sm " [dir]="lgs.dir">
+        <h3> {{detail?.title}} <b>/&pound; {{detail?.price}}  </b></h3>
+        <div *ngIf="owner?.isMerchent">
+          <h3 *ngIf="!owner?.isMerchent">
+            <B l10nTranslate>address</B> {{" : "+address}} <i class="fa fa-map-marker" aria-hidden="true"> </i>
+          </h3>
+        </div>
       </div>
 
-      <div class="col-md-12 well">
-        <h3 l10nTranslate>Details</h3>:
+      <div class="col-md-12 well" [dir]="lgs.dir">
+        <h3 l10nTranslate>Details</h3>
         <table class="table">
           <tr>
-            <td l10nTranslate>area</td>:
-            <td>{{detail.neighborhood}}</td>
-            <td l10nTranslate>postalcode</td>:
-            <td>{{detail.postCode}}</td>
-          </tr>
-          <tr>
-            <td l10nTranslate>street</td>:
-            <td>{{detail.postCode}}</td>
-            <td l10nTranslate>bikeType</td>:
-            <td>{{detail.bikeType}}</td>
-          </tr>
-          <tr>
-            <td l10nTranslate>size</td>:
-            <td>{{detail.size}}</td>
-            <td l10nTranslate>wheelSize</td>:
-            <td>{{detail.wheelSize}}</td>
-          </tr>
-
-          <tr>
             <td l10nTranslate>price</td>:
-            <td>{{detail.price}}</td>
+            <td>{{detail?.price}}</td>
             <td l10nTranslate>old</td>:
-            <td>{{detail.used}}</td>
+            <td>{{detail?.used}}</td>
           </tr>
 
           <tr>
+            <td l10nTranslate>type</td>:
+            <td>{{detail?.bikeType}}</td>
+            <td l10nTranslate>brand</td>:
+            <td>{{detail?.bikeBrand}}</td>
+          </tr>
+
+          <tr>
+            <td l10nTranslate>model</td>:
+            <td>{{detail?.model}}</td>
+            <td l10nTranslate>frameType</td>:
+            <td>{{detail?.frameType}}</td>
+          </tr>
+
+          <tr>
+            <td l10nTranslate>breakType</td>:
+            <td>{{detail?.breakType}}</td>
+            <td l10nTranslate>size</td>:
+            <td>{{detail?.size}}</td>
+          </tr>
+
+
+          <tr>
+
             <td l10nTranslate>wheelSize</td>:
-            <td>{{detail.wheelSize}}</td>
-            <td l10nTranslate>productionYear</td>:
-            <td>{{detail.productionDate}}</td>
+            <td>{{detail?.wheelSize}}</td>
+            <td l10nTranslate>availableFromDate</td>:
+            <td>{{detail?.fromDate | date}}</td>
           </tr>
           <tr>
-            <td l10nTranslate>availableFromDate</td>:
-            <td>{{detail.fromDate}}</td>
+
             <td l10nTranslate>availableToDate</td>:
-            <td>{{detail.toDate}}</td>
+            <td>{{detail?.toDate}}</td>
+            <td l10nTranslate>area</td>:
+            <td>{{detail?.neighborhood}}</td>
           </tr>
+
 
         </table>
       </div>
-      <div class="col-md-12 well-sm">
+      <div class="col-md-12 well-sm" [dir]="lgs.dir">
         <h3><b l10nTranslate>description</b>:</h3>
         <hr/>
-        <p>{{detail.description}} </p>
+        <p>{{detail?.description}} </p>
       </div>
-
-      <div class="col-md-12 well-sm">
-        <h3><b l10nTranslate>ownerInformation</b>:</h3>
-        <hr/>
-        <div>
-          <label l10nTranslate>name</label>: {{owner.name}}
-        </div>
-        <div>
-          <label l10nTranslate>about</label>: {{owner.about}}
-        </div>
-        <div>
-          <label l10nTranslate>website</label>: {{owner.website}}
-        </div>
-        <div>
-          <label l10nTranslate>phone</label>: {{owner.phone}}
+      <div *ngIf="owner?.isMerchent">
+        <div class="col-md-12 well-sm" [dir]="lgs.dir" *ngIf=" !owner?.isMerchent">
+          <h3><b l10nTranslate>ownerInformation</b>:</h3>
+          <hr/>
+          <div>
+            <label l10nTranslate>name</label>: {{owner.name}}
+          </div>
+          <div>
+            <label l10nTranslate>about</label>: {{owner.about}}
+          </div>
+          <div>
+            <label l10nTranslate>website</label>: {{owner.website}}
+          </div>
+          <div>
+            <label l10nTranslate>phone</label>: {{owner.phone}}
+          </div>
         </div>
       </div>
-
     </div>
     <div class="col-md-4">
       <h4 l10nTranslate><b>likeIt</b></h4>
       <div class="btn btn-info" (click)="show()" l10nTranslate>sendMessage</div>
 
-      <message-form [show]="showMessageForm" [onwer]="onwer" [key]=""></message-form>
+      <message-form [show]="showMessageForm" [onwer]="owner" [key]="key"></message-form>
 
       <div class="btn btn-info"><b l10nTranslate>moreContacts</b></div>
 
       <div class="">
         <br/>
-        <div class="btn btn-default"  ><i class="fa fa-print" aria-hidden="true"></i> <b l10nTranslate>print</b> </div>
+        <div class="btn btn-default"><i class="fa fa-print" aria-hidden="true"></i> <b l10nTranslate>print</b> </div>
         <div class="btn btn-default"><i class="fa fa-share" aria-hidden="true"></i> Share <i class="fa fa-angle-down" aria-hidden="true"></i>
         </div>
         <br/>

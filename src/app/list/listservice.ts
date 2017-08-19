@@ -4,21 +4,11 @@ import { AngularFire, AngularFireDatabase } from 'angularfire2';
 import { Http, Headers } from '@angular/http';
 @Injectable()
 export class ListService {
-  private _searchValue;
+
   private _searchObject: SearchObject = {};
 
+  private _models;
   constructor(private cds: CommonDataService, private af: AngularFire, private http: Http) {
-  }
-
-
-
-  get searchValue() {
-
-    return this._searchValue;
-  }
-
-  set searchValue(value) {
-    this._searchValue = value;
   }
 
   get searchObject(): SearchObject {
@@ -29,12 +19,22 @@ export class ListService {
     this._searchObject = value;
   }
 
+  get models() {
+    return this._models;
+  }
+
+  set models(value) {
+    this._models = value;
+  }
+
+
   findDataBySeachObject() {
+
     let sb = this._searchObject;
     if (sb.title)
-      sb = this._searchObject.title = { "$regex": this._searchObject.title };
+      sb.title = { "$regex": this._searchObject.title };
     if (sb.priceFrom && sb.priceTo)
-      sb = this._searchObject.price = { "$bt": [this._searchObject.priceFrom, this._searchObject.priceTo] };
+      sb.price = { "$bt": [this._searchObject.priceFrom, this._searchObject.priceTo] };
     let header = new Headers();
     header.append('x-apikey', '597c6db8a63f5e835a5df8b1');
     header.append('Content-Type', 'application/json');
@@ -49,7 +49,7 @@ export interface SearchObject {
   priceTo?: number,
   priceFrom?: number,
   area?: string,
-  title?,
+  title?, search?,
   used?: string,
   price?: {}
 

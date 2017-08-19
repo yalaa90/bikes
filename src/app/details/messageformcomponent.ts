@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { CommonDataService } from '../common/commondataservice';
 import { MessageFormService } from './messageformservice';
+import {LoginService} from '../login/loginservice';
 @Component({
     selector: 'message-form',
     templateUrl: './messageformcomponent.html',
@@ -11,8 +12,8 @@ export class MessageFormComponent {
     form: FormGroup;
     @Input() show = false;
     @Input() key = '';
-    @Input() onwer = {};
-    constructor(private cds: CommonDataService, private fb: FormBuilder) {
+    @Input() onwer ;
+    constructor(private cds: CommonDataService, private fb: FormBuilder, private lgs:LoginService) {
         this.form = fb.group({
             name: ['', Validators.required],
             email: ['', Validators.required],
@@ -25,13 +26,15 @@ export class MessageFormComponent {
     }
 
     sendMessage() {
+        debugger;
         this.form.patchValue({
             key: this.key,
             onwer: this.onwer
         })
-        this.cds.pushwithoutresponse('messages', this.form);
-        if (this.onwer && !this.onwer['ismerchent'])
+        this.cds.pushwithoutresponse('messages', this.form.value);
+        if (this.onwer && !this.onwer['isMerchent'])
             this.sendEmail();
+        this.form.reset();
         this.show = false;
     }
 
@@ -43,4 +46,5 @@ export class MessageFormComponent {
             gotcha: 'display:none'
         }, {});
     }
+    
 }

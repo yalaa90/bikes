@@ -1,5 +1,6 @@
 import {Component, Input} from "@angular/core";
 import {ListCardService} from "./listcardservice";
+import {LoginService} from '../login/loginservice';
 @Component({
   selector: 'list-card',
   templateUrl: 'listcardcomponent.html',
@@ -9,7 +10,7 @@ export class ListCardComponent {
 
   @Input() public model;
 
-  constructor(private  lcs: ListCardService) {
+  constructor(private  lcs: ListCardService, public lgs:LoginService) {
 
   }
 

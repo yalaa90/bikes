@@ -1,15 +1,15 @@
-<div class="container">
+<div class="container" [dir]="ls.dir">
 	<div class="row main">
 		<div class="panel-heading">
 			<div class="panel-title text-center">
-				<h3 class="title">Please enter your data</h3>
+				<h3 class="title" l10nTranslate>plenurdata</h3>
 			</div>
 		</div>
 		<div class="main-login main-center">
 			<form class="form-horizontal" method="post" action="#" [formGroup]="form">
 
 				<div class="form-group">
-					<label for="name" class="cols-sm-2 control-label">Your Name</label>
+					<label for="name" class="cols-sm-2 control-label" l10nTranslate>name</label>
 					<div class="cols-sm-10">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -19,7 +19,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="email" class="cols-sm-2 control-label">Your Email</label>
+					<label for="email" class="cols-sm-2 control-label" l10nTranslate>email</label>
 					<div class="cols-sm-10">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
@@ -29,7 +29,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="username" class="cols-sm-2 control-label">Phone</label>
+					<label for="username" class="cols-sm-2 control-label" l10nTranslate>phone</label>
 					<div class="cols-sm-10">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
@@ -39,7 +39,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="password" class="cols-sm-2 control-label">Password</label>
+					<label for="password" class="cols-sm-2 control-label" l10nTranslate>password</label>
 					<div class="cols-sm-10">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
@@ -50,7 +50,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+					<label for="confirm" class="cols-sm-2 control-label" l10nTranslate>confirmPassword</label>
 					<div class="cols-sm-10">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
@@ -71,7 +71,7 @@
 
 
 				<div class="form-group">
-					<label for="address" class="cols-sm-2 control-label">Address</label>
+					<label for="address" class="cols-sm-2 control-label" l10nTranslate>address</label>
 					<div class="cols-sm-10">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-address-card fa-lg" aria-hidden="true"></i></span>
@@ -80,11 +80,20 @@
 						</div>
 					</div>
 				</div>
-				<span style="color: red" >{{ls.regMessage}}</span>
+				<div class="form-group">
+					<label for="address" class="cols-sm-2 control-label" l10nTranslate>isMerchent</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-address-card fa-lg" aria-hidden="true"></i></span>
+							<input type="checkbox" class="form-control" name="isMerchent" id="isMerchent" formControlName="isMerchent" />
+						</div>
+					</div>
+				</div>
+				<span style="color: red">{{ls.regMessage}}</span>
 				<div class="form-group ">
 					<button type="button" class="btn btn-primary btn-lg btn-block login-button" (click)="createAccount()">Create</button>
 				</div>
-
+				<br/><br/><br/>
 			</form>
 		</div>
 	</div>
